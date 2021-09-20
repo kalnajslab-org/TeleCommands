@@ -3,6 +3,7 @@ import csv
 import time
 
 tc_filename = 'TC_Parameters.csv'
+Font = ('Courier', 16)
 
 def read_parameter_file(filename,Instrument):
     ''' This reads the csv file and returns each column as a list '''
@@ -63,9 +64,9 @@ def pick_an_instrument():
 
     instruments = ['LPC','RACHuTS','FLOATS']
     
-    instrument_layout = [[sg.InputCombo(values=instruments, key = '_inst_',  font = ('any', 12))]]
-    layout_pick_instrument = [[sg.Frame('Select Instrument: ', instrument_layout, font = ('any', 12))],
-                        [sg.Submit( font = ('any', 12)), sg.Cancel( font = ('any', 12))]]
+    instrument_layout = [[sg.InputCombo(values=instruments, key = '_inst_',  font = Font)]]
+    layout_pick_instrument = [[sg.Frame('Select Instrument: ', instrument_layout, font = Font)],
+                        [sg.Submit( font = Font), sg.Cancel( font = Font)]]
 
     instrument_window = sg.Window('Select Instrument', layout_pick_instrument)
     event, values = instrument_window.Read()
@@ -81,13 +82,13 @@ def pick_a_TC(instrument):
     ''' Graphical User interface - prompts the user for instrument, command and value
         then calls MakeTCfile to assemble the TC file based on the users choices '''
     params, enums, defaults, num_vals,val_max, val_min, notes = read_parameter_file(tc_filename,instrument)
-    param_layout = [[sg.Listbox(values=params,key = '_param_', tooltip = 'Select command to send', size=(20, 6),font = ('any', 12))]]
-    #param_layout = [[sg.InputCombo(values=params, key = '_param_',  font = ('any', 12))]]
+    param_layout = [[sg.Listbox(values=params,key = '_param_', tooltip = 'Select command to send', size=(20, 6),font = Font)]]
+    #param_layout = [[sg.InputCombo(values=params, key = '_param_',  font = Font)]]
     
 
-    layout_pick_parameter = [[sg.Frame('Select Parameter to Update: ', param_layout, font = ('any', 12))],
-                             #[sg.Frame('Input new value: ', value_layout, font = ('any', 12))],
-                             [sg.Submit( font = ('any', 12)), sg.Cancel( font = ('any', 12))]]
+    layout_pick_parameter = [[sg.Frame('Select Parameter to Update: ', param_layout, font = Font)],
+                             #[sg.Frame('Input new value: ', value_layout, font = Font)],
+                             [sg.Submit( font = Font), sg.Cancel( font = Font)]]
                              
     
 
@@ -108,7 +109,7 @@ def pick_a_TC(instrument):
             indx += 1
 
     if num_vals[indx] == 0:
-        confirm_layout = [[sg.Text('Confirm: ' + notes[indx],font = ('any', 12))],
+        confirm_layout = [[sg.Text('Confirm: ' + notes[indx],font = Font)],
                           [sg.Submit(), sg.Cancel()]]
         confirm_window = sg.Window('Confirm Command',confirm_layout)
         
@@ -121,46 +122,46 @@ def pick_a_TC(instrument):
             filename = instrument+time.strftime("%Y%m%d-%H%M%S")+'.tc'
             cmnd = str(enumeration) + ';'
             MakeTCFile(filename, cmnd)
-            sg.Popup('Command is Valid \nWriting ' + cmnd + '\nTo '+ instrument + ' TC file: ' + filename,font = ('any', 12))
+            sg.Popup('Command is Valid \nWriting ' + cmnd + '\nTo '+ instrument + ' TC file: ' + filename,font = Font)
             return True, 0
 
 
     if num_vals[indx] == 1:
-        value_layout =  [[sg.Text(notes[indx],font = ('any', 12))],
-                     [sg.Text('Default Value '+ str(defaults[indx]),font = ('any', 12))],
-                        [sg.Text('Value:',font = ('any', 12)), sg.InputText( key = '_val_')]]
-        layout_enter_value = [[sg.Frame('Input new value: ', value_layout, font = ('any', 12))],
-                              [sg.Submit( font = ('any', 12)), sg.Cancel( font = ('any', 12))]]
+        value_layout =  [[sg.Text(notes[indx],font = Font)],
+                     [sg.Text('Default Value '+ str(defaults[indx]),font = Font)],
+                        [sg.Text('Value:',font = Font), sg.InputText( key = '_val_')]]
+        layout_enter_value = [[sg.Frame('Input new value: ', value_layout, font = Font)],
+                              [sg.Submit( font = Font), sg.Cancel( font = Font)]]
         
         value_window = sg.Window('Enter Value',layout_enter_value)
         event, values = value_window.Read()
         value_window.Close()
 
-        new_param_value = int(values['_val_'])
+        new_param_value = float(values['_val_'])
         print(new_param_value)
 
-        if new_param_value < int(val_max[indx]) and new_param_value > int(val_min[indx]):
+        if new_param_value < float(val_max[indx]) and new_param_value > float(val_min[indx]):
             print('New value is within range')
         else:
-            sg.Popup('Value(s) out of Range!\nNo TC File Created',font = ('any', 12))
+            sg.Popup('Value(s) out of Range!\nNo TC File Created',font = Font)
             print('New Value out of Range!')
             return 'error', 0
 
         filename = instrument+time.strftime("%Y%m%d-%H%M%S")+'.tc'
         cmnd = str(enumeration)+',' + str(new_param_value) +';'
         MakeTCFile(filename,cmnd)
-        sg.Popup('Values within range \nWriting ' + cmnd + '\nTo: ' + instrument + ' TC file: ' + filename,font = ('any', 12))
+        sg.Popup('Values within range \nWriting ' + cmnd + '\nTo: ' + instrument + ' TC file: ' + filename,font = Font)
         return True, 1
 
     if num_vals[indx] == 2:
-        value_layout =  [[sg.Text(notes[indx],font = ('any', 12))],
-                         [sg.Text('Default Value '+ str(defaults[indx])+ 'No Limit Checking for values!',font = ('any', 12))],
-                         [sg.Text('Value 1:',font = ('any', 12)), sg.InputText( key = '_val1_')],
-                         [sg.Text('Value 2:',font = ('any', 12)), sg.InputText( key = '_val2_')]]
+        value_layout =  [[sg.Text(notes[indx],font = Font)],
+                         [sg.Text('Default Value '+ str(defaults[indx])+ 'No Limit Checking for values!',font = Font)],
+                         [sg.Text('Value 1:',font = Font), sg.InputText( key = '_val1_')],
+                         [sg.Text('Value 2:',font = Font), sg.InputText( key = '_val2_')]]
 
 
-        layout_enter_value = [[sg.Frame('Input new value: ', value_layout, font = ('any', 12))],
-                               [sg.Submit( font = ('any', 12)), sg.Cancel( font = ('any', 12))]]
+        layout_enter_value = [[sg.Frame('Input new value: ', value_layout, font = Font)],
+                               [sg.Submit( font = Font), sg.Cancel( font = Font)]]
                          
         value_window = sg.Window('Enter Value',layout_enter_value)
         event, values = value_window.Read()
@@ -174,25 +175,25 @@ def pick_a_TC(instrument):
         if new_param_value_2 < int(val_max[indx]) and new_param_value_2 > int(val_min[indx]):
             print('Value two is within range')
         else:
-            sg.Popup('Value(s) out of Range!\nNo TC File Created',font = ('any', 12))
+            sg.Popup('Value(s) out of Range!\nNo TC File Created',font = Font)
             print('Value out of Range!')
             return 'error', 0
 
         filename = instrument+time.strftime("%Y%m%d-%H%M%S")+'.tc'
         cmnd = str(enumeration)+',' + str(new_param_value_1) + ',' + str(new_param_value_2) + ';'
         MakeTCFile(filename,cmnd)
-        sg.Popup('Values within range \nWriting ' + cmnd + '\nTo: ' + instrument + ' TC file: ' + filename,font = ('any', 12))
+        sg.Popup('Values within range \nWriting ' + cmnd + '\nTo: ' + instrument + ' TC file: ' + filename,font = Font)
         return True, 2
 
     if num_vals[indx] == 3:
-        value_layout =  [[sg.Text(notes[indx],font = ('any', 12))],
-                     [sg.Text('Default Value '+ str(defaults[indx])+ 'No Limit Checking for values!',font = ('any', 12))],
-                     [sg.Text('Value 1:',font = ('any', 12)), sg.InputText( key = '_val1_')],
-                     [sg.Text('Value 2:',font = ('any', 12)), sg.InputText( key = '_val2_')],
-                     [sg.Text('Value 3:',font = ('any', 12)), sg.InputText( key = '_val3_')]]
+        value_layout =  [[sg.Text(notes[indx],font = Font)],
+                     [sg.Text('Default Value '+ str(defaults[indx])+ 'No Limit Checking for values!',font = Font)],
+                     [sg.Text('Value 1:',font = Font), sg.InputText( key = '_val1_')],
+                     [sg.Text('Value 2:',font = Font), sg.InputText( key = '_val2_')],
+                     [sg.Text('Value 3:',font = Font), sg.InputText( key = '_val3_')]]
                      
-        layout_enter_value = [[sg.Frame('Input new value: ', value_layout, font = ('any', 12))],
-                              [sg.Submit( font = ('any', 12)), sg.Cancel( font = ('any', 12))]]
+        layout_enter_value = [[sg.Frame('Input new value: ', value_layout, font = Font)],
+                              [sg.Submit( font = Font), sg.Cancel( font = Font)]]
             
         value_window = sg.Window('Enter Value',layout_enter_value)
         event, values = value_window.Read()
@@ -209,26 +210,26 @@ def pick_a_TC(instrument):
         if new_param_value_3 < int(val_max[indx]) and new_param_value_3 > int(val_min[indx]):
             print('Value three is within range')
         else:
-            sg.Popup('Value(s) out of Range!\nNo TC File Created',font = ('any', 12))
+            sg.Popup('Value(s) out of Range!\nNo TC File Created',font = Font)
             print('Value out of Range!')
             return 'error', 0
         
         filename = instrument+time.strftime("%Y%m%d-%H%M%S")+'.tc'
         cmnd = str(enumeration)+',' + str(new_param_value_1) + ',' + str(new_param_value_2) + ',' + str(new_param_value_3) + ';'
         MakeTCFile(filename,cmnd)
-        sg.Popup('Values within range \nWriting ' + cmnd + '\nTo: ' + instrument + ' TC file: ' + filename,font = ('any', 12))
+        sg.Popup('Values within range \nWriting ' + cmnd + '\nTo: ' + instrument + ' TC file: ' + filename,font = Font)
         return True, 3
 
     if num_vals[indx] == 4:
-        value_layout =  [[sg.Text(notes[indx],font = ('any', 12))],
-                     [sg.Text('Default Value '+ str(defaults[indx])+ 'No Limit Checking for values!',font = ('any', 12))],
-                     [sg.Text('Value 1:',font = ('any', 12)), sg.InputText( key = '_val1_')],
-                     [sg.Text('Value 2:',font = ('any', 12)), sg.InputText( key = '_val2_')],
-                     [sg.Text('Value 3:',font = ('any', 12)), sg.InputText( key = '_val3_')],
-                     [sg.Text('Value 4:',font = ('any', 12)), sg.InputText( key = '_val4_')]]
+        value_layout =  [[sg.Text(notes[indx],font = Font)],
+                     [sg.Text('Default Value '+ str(defaults[indx])+ 'No Limit Checking for values!',font = Font)],
+                     [sg.Text('Value 1:',font = Font), sg.InputText( key = '_val1_')],
+                     [sg.Text('Value 2:',font = Font), sg.InputText( key = '_val2_')],
+                     [sg.Text('Value 3:',font = Font), sg.InputText( key = '_val3_')],
+                     [sg.Text('Value 4:',font = Font), sg.InputText( key = '_val4_')]]
         
-        layout_enter_value = [[sg.Frame('Input new value: ', value_layout, font = ('any', 12))],
-                     [sg.Submit( font = ('any', 12)), sg.Cancel( font = ('any', 12))]]
+        layout_enter_value = [[sg.Frame('Input new value: ', value_layout, font = Font)],
+                     [sg.Submit( font = Font), sg.Cancel( font = Font)]]
                          
         value_window = sg.Window('Enter Value',layout_enter_value)
         event, values = value_window.Read()
@@ -248,27 +249,27 @@ def pick_a_TC(instrument):
         if new_param_value_4 < int(val_max[indx]) and new_param_value_3 > int(val_min[indx]):
             print('Value four is within range')
         else:
-            sg.Popup('Value(s) out of Range!\nNo TC File Created',font = ('any', 12))
+            sg.Popup('Value(s) out of Range!\nNo TC File Created',font = Font)
             print('Value out of Range!')
             return False, 0
 
         filename = instrument+time.strftime("%Y%m%d-%H%M%S")+'.tc'
         cmnd = str(enumeration)+',' + str(new_param_value_1) + ',' + str(new_param_value_2) + ',' + str(new_param_value_3)+ ',' + str(new_param_value_4) + ';'
         MakeTCFile(filename,cmnd)
-        sg.Popup('Values within range \nWriting ' + cmnd + '\nTo: ' + instrument + ' TC file: ' + filename,font = ('any', 12))
+        sg.Popup('Values within range \nWriting ' + cmnd + '\nTo: ' + instrument + ' TC file: ' + filename,font = Font)
         return True, 4
                  
     if num_vals[indx] == 5:
-        value_layout =  [[sg.Text(notes[indx],font = ('any', 12))],
-                 [sg.Text('Default Value '+ str(defaults[indx])+ 'No Limit Checking for values!',font = ('any', 12))],
-                 [sg.Text('Value 1:',font = ('any', 12)), sg.InputText( key = '_val1_')],
-                 [sg.Text('Value 2:',font = ('any', 12)), sg.InputText( key = '_val2_')],
-                 [sg.Text('Value 3:',font = ('any', 12)), sg.InputText( key = '_val3_')],
-                 [sg.Text('Value 4:',font = ('any', 12)), sg.InputText( key = '_val4_')],
-                 [sg.Text('Value 5:',font = ('any', 12)), sg.InputText( key = '_val5_')]]
+        value_layout =  [[sg.Text(notes[indx],font = Font)],
+                 [sg.Text('Default Value '+ str(defaults[indx])+ 'No Limit Checking for values!',font = Font)],
+                 [sg.Text('Value 1:',font = Font), sg.InputText( key = '_val1_')],
+                 [sg.Text('Value 2:',font = Font), sg.InputText( key = '_val2_')],
+                 [sg.Text('Value 3:',font = Font), sg.InputText( key = '_val3_')],
+                 [sg.Text('Value 4:',font = Font), sg.InputText( key = '_val4_')],
+                 [sg.Text('Value 5:',font = Font), sg.InputText( key = '_val5_')]]
 
-        layout_enter_value = [[sg.Frame('Input new value: ', value_layout, font = ('any', 12))],
-                           [sg.Submit( font = ('any', 12)), sg.Cancel( font = ('any', 12))]]
+        layout_enter_value = [[sg.Frame('Input new value: ', value_layout, font = Font)],
+                           [sg.Submit( font = Font), sg.Cancel( font = Font)]]
                      
         value_window = sg.Window('Enter Value',layout_enter_value)
         event, values = value_window.Read()
@@ -291,14 +292,14 @@ def pick_a_TC(instrument):
         if new_param_value_5 < int(val_max[indx]) and new_param_value_5 > int(val_min[indx]):
          print('Value four is within range')
         else:
-            sg.Popup('Value(s) out of Range!\nNo TC File Created',font = ('any', 12))
+            sg.Popup('Value(s) out of Range!\nNo TC File Created',font = Font)
             print('Value out of Range!')
             return False, 0
         
         filename = instrument+time.strftime("%Y%m%d-%H%M%S")+'.tc'
-        cmnd = str(enumeration)+',' + str(new_param_value_1) + ',' + str(new_param_value_2) + ',' + str(new_param_value_3) + str(new_param_value_4) + str(new_param_value_5) + ';'
+        cmnd = str(enumeration)+',' + str(new_param_value_1) + ',' + str(new_param_value_2) + ',' + str(new_param_value_3)+','  + str(new_param_value_4) +',' + str(new_param_value_5) + ';'
         MakeTCFile(filename,cmnd)
-        sg.Popup('Values within range \nWriting ' + cmnd + '\nTo: ' + instrument + ' TC file: ' + filename,font = ('any', 12))
+        sg.Popup('Values within range \nWriting ' + cmnd + '\nTo: ' + instrument + ' TC file: ' + filename,font = Font)
         return True, 5
 
     

@@ -1,94 +1,101 @@
-Instrument,Parameter,Values,Enum,Default,Min_val,Max_val,Notes,,,
-LPC,SetSample,1,101,150,1,1800,Number of 2s Samples to collect in one measurement,,,
-LPC,SetWarmUpTime,1,102,10,0,1800,Number of seconds to remain in warmup mode,,,
-LPC,setCycleTime,1,103,60,3,1440,Cycle time in Minutes,,,
-LPC,setLaserTemp,1,107,10,-20,30,Target laser temperature to reach during warmup period,,,
-LPC,SetFlush,1,109,50,0,300,Optical Cell Flushing time in seconds,,,
-LPC,SampleAveraging,1,110,10,0,120,Number of 2 seconds samples to sum for each telemetered data point,,,
-LPC,SetPump1BEMF,1,111,7.8,0,13,Back EMF (Pump speed) setpoint for pump 1,,,
-LPC,SetPump2BEMF,1,112,7.8,0,13,Back EMF (Pump speed) setpoint for pump 1,,,
-LPC,SetPumpMaxT,1,113,65,-40,100,Maximum pump operating temperature at beginning of measurement cycle,,,
-LPC,SetPump1MinT,1,114,-20,-40,100,Minimum operating temperature for Pump 1 at beginning of measurement cycle,,,
-LPC,SetPump2MinT,1,115,-20,-40,100,Minimum operating temperature for Pump 2 at beginning of measurement cycle,,,
-RACHuTS,SetAuto,0,130,0,0,1,Switch To Automatic Profile Mode,,,
-RACHuTS,SetManual,0,131,0,0,1,Switch to Manual Profile Mode,,,
-RACHuTS,SetSZAMin,1,132,105,0,180,Set SZA to begin profiling,,,
-RACHuTS,SetProfileSize,1,133,7500,0.1,8500,Distance to profile in reel revolutions,,,
-RACHuTS,SetDockAmount,1,134,75,0.1,300,Number of slow revolutions before docking,,,
-RACHuTS,SetDwellTime,1,135,3600,1,7200,Number of seconds to dwell at bottom of profile,,,
-RACHuTS,SetProfilePeriod,1,136,7200,60,10800,Number of second between the start of profiles,,,
-RACHuTS,SetNumberProfiles,1,137,4,0,6,Number of Profiles per night,,,
-RACHuTS,UseSZATrigger,0,138,0,0,1,Trigger profile commencement by SZA,,,
-RACHuTS,UseTimeTrigger,0,139,0,0,1,Trigger profile commencement by Time,,,
-RACHuTS,SetTimeTrigger,1,140,0,1573576976,1590969600,Time for next profile (Unix time),,,
-RACHuTS,SetDockOvershoot,1,141,75,0,300,Excess reel rotations to ensure dock,,,
-RACHuTS,Redock,2,142,5,0,301,"Retry a dock: num_revs_out, num_revs_in",,,
-RACHuTS,GetPUStatus,0,143,0,0,1,Request State of Health from PU,,,
-RACHuTS,PUPowerOn,0,144,0,0,1,Turn on RACHuTS PU Charger Power,,,
-RACHuTS,PUPowerOff,0,145,0,0,1,Turn off RACHuTS PU Charger Power,,,
-RACHuTS,ManualProfile*,4,146,0,-1,8000,"Launch a manual profile: num_revs_out, num_dock_revs, num_dock_overshoot, dwell_time",,,
-RACHuTS,OffLoadProfile,0,147,0,0,1,Offload PU data from previos profile,,,
-RACHuTS,SetPreProfileTime,1,148,60,0,100000,Number of second to record docked data before a profile,,,
-RACHuTS,SetPUWarmUpTime,1,149,120,0,1800,PU warm up before a profile in seconds,,,
-RACHuTS,AutoRedockParams*,3,150,0,0,100,"Automatic Redocking Parameters: num_revs_out, num_revs_in, num_retrys",,,
-RACHuTS,SetMotionTimeout,1,151,0,0,1800,Set the MCB Motion Timeout in seconds,,,
-RACHuTS,GetPIBEEPROM,0,152,0,1,0,Send the contents of the PIB Onfiguration EEPROM,,,
-RACHuTS,StartDockedProfile,1,153,1800,1,65535,Start a docked measurement for duration (s),,,
-RACHuTS,StartRealTimeMCB,0,154,0,1,0,Enable real time MCB TMs,,,
-RACHuTS,EndRealTimeMCB,0,155,0,1,0,Disable real time MCB TMs,,,
-RACHuTS,LoRaTXTm,1,156,0,-1,2,Enable (1) or dissable (0) profile TM transmissin by LoRa,,,
-RACHuTS,LoRaTXStatus,1,157,0,-1,65535,"Set the cadence for LoRa Status Updates from PU in Seconds, 0 dissables TX",,,
-RACHuTS,RAOverride,0,158,0,0,1,Override the requirement for a RACHuTS autherization from Zephyr before motion,,,
-RACHuTS,RAResume,0,159,0,0,1,Resume requiring RACHuTS autherization from Zephyr before motion,,,
-RACHuTS,SetAutoOffload,0,160,0,0,1,Automatically offload PU profile data after a manual profile (turn off for Auto Profile mode),,,
-RACHuTS,SetMaualOffload,0,161,0,0,1,Manually offload PU profile data after a manual profile (use this mode for Auto Profile),,,
-RACHuTS,PuWarmUpConfig*,5,180,0,0,0,"Set the Profiler warm up routine: flash_temp, heater1_temp, heater2_temp, flash_power, tsen_power",,,
-RACHuTS,PUProfileConfig*,5,181,0,0,60,"Set the PU Profile parameters: Profile Data Rate, Dwell Data Rate, FLASH On/Off, ROPC On/Off, TSEN On/Off",,,
-RACHuTS,DockedMeasurementConfig,3,183,0,0,65535,"Docked Profile Config: Data Rate (s), FLASH on (0/1),  ROPC on (0/1), TSEN on (0/1)",,,
-RACHuTS,ResetPIB,0,200,0,0,1,Reset the Profiler Interface Board,,,
-RACHuTS,ExitError,0,201,0,0,1,Exit the error holding state,,,
-RACHuTS,DeployDistance,1,1,0,0,8500,Deploy specified number of revolutions - motion starts immediately,,,
-RACHuTS,DeploySpeed,1,2,60,0,300,Deployment speed in RPM,,,
-RACHuTS,DeployAcceleration,1,3,1,0.25,2,Deployment acceleration in Revolution/s/s - do not use,,,
-RACHuTS,RetractDistance,1,4,0,0,10000,Retract  specified number of revolutions - motion starts immediately,,,
-RACHuTS,RetractSpeed,1,5,60,0,300,Retract speed in RPM,,,
-RACHuTS,RetractAcceleration,1,6,1,0.25,2,Retraction acceleration in Revolution/s/s - do not use,,,
-RACHuTS,DockDistance,1,7,75,0,300,Docking Distance in revolutions,,,
-RACHuTS,DockSpeed,1,8,40,0,80,Docking speed in RPM,,,
-RACHuTS,DockAcceleration,1,9,1,0.25,2,Docking acceleration in Revolution/s/s - do not use,,,
-RACHuTS,FullRetract,0,10,0,0,0,Not implemented - set instrument to Safety Mode instead,,,
-RACHuTS,CancelMotion,0,11,0,0,0,Cancel the currently executing motion,,,
-RACHuTS,ZeroReel,0,12,0,0,0,Set the current reel position as the zero position,,,
-RACHuTS,TemperatureLimits*,6,13,40,80,100,"Set the MCB temperature limits: reel hi, reel lo, lw hi, lw lo, mc1 hi, mc1 lo",,,
-RACHuTS,TorqueLimits*,2,14,200,500,600,"Set the MCB torque limits: reel hi, reel lo",,,
-RACHuTS,CurrentLimits*,2,15,2,-25,25,"Set the MCB current limits: reel hi, reel lo",,,
-RACHuTS,IgnoreLimits,0,16,0,0,0,"Set the MCB to ignore current, temperature, voltage limits",,,
-RACHuTS,UseLimits,0,17,0,0,0,"Set the MCB to use current, temperature, voltage limits",,,
-RACHuTS,GetMCBEEPROM,0,18,0,0,0,Request the contents of the MCB EEPROM,,,
-RACHuTS,PUReset,0,182,0,0,0,Reset the Profiling Unit,,,
-RACHuTS,LoRa Simulator,2,204,10,1,1000,Simulate LoRa TX from MonDo Board,,,
-FLOATS,ResetDIB,0,200,0,0,1,Reset the Profiler Interface Board,,,
-FLOATS,ExitError,0,201,0,0,1,Exit the error holding state,,,
-FLOATS,DeployDistance,1,1,0,0,3685,Deploy specified number of revolutions - motion starts immediately,,,
-FLOATS,DeploySpeed,1,2,60,0,60,Deployment speed in RPM,,,
-FLOATS,DeployAcceleration,1,3,0,0,0,Not implemented on FLOATS,,,
-FLOATS,RetractDistance,1,4,0,0,10000,Retract  specified number of revolutions - motion starts immediately,,,
-FLOATS,RetractSpeed,1,5,60,0,60,Retract speed in RPM,,,
-FLOATS,RetractAcceleration,1,6,0,0,0,Not implemented on FLOATS,,,
-FLOATS,DockDistance,1,7,75,0,300,Docking Distance in revolutions,,,
-FLOATS,DockSpeed,1,8,30,0,30,Docking speed in RPM,,,
-FLOATS,DockAcceleration,1,9,0,0,0,Not implemented on FLOATS,,,
-FLOATS,FullRetract,0,10,0,0,0,Not implemented - set instrument to Safety Mode instead,,,
-FLOATS,CancelMotion,0,11,0,0,0,Cancel the currently executing motion,,,
-FLOATS,ZeroReel,0,12,0,0,0,Set the current reel position as the zero position,,,
-FLOATS,TemperatureLimits*,6,13,40,80,100,"Set the MCB temperature limits: reel hi, reel lo, lw hi, lw lo, mc1 hi, mc1 lo",,,
-FLOATS,TorqueLimits*,2,14,200,500,600,"Set the MCB torque limits: reel hi, reel lo",,,
-FLOATS,CurrentLimits*,2,15,2,13.75,15,"Set the MCB current limits: reel hi, reel lo",,,
-FLOATS,GoFTRFlight,0,50,0,0,0,Go to the flight FTR Sub Mode,,,
-FLOATS,GoMCBFlight,0,51,0,0,0,Go to the flight MCB Sub Mode,,,
-FLOATS,FTRCycleTime,1,52,300,0,3600,FTR Measurement Cycle Time (idle_period),,,
-FLOATS,FTROnTime,1,53,600,0,3600,FTR On Time (Measure_Period),,,
-FLOATS,SetFDIBHKPeriod,1,54,120,60,3600,DIB HK Period (HK_Loop),,,
-FLOATS,FTRStatusLimit,1,55,15,6,45,FTR Status Limit (Stat_Limit),,,
-FLOATS,RamanLen,1,56,1850,200,2000,FTR Raman Length (RamanLength),,,
-FLOATS,SetMeasureType,1,57,0,-1,10,FTR Measurement Type, second parameter needed for burst limit (default = 8, min = 1, max = 30) 
+Instrument,Parameter,Values,Enum,Default,Min_val,Max_val,Notes
+LPC,SetSample,1,101,150,1,1800,Number of 2s Samples to collect in one measurement
+LPC,SetWarmUpTime,1,102,10,0,1800,Number of seconds to remain in warmup mode
+LPC,setCycleTime,1,103,60,3,1440,Cycle time in Minutes
+LPC,setLaserTemp,1,107,10,-20,30,Target laser temperature to reach during warmup period
+LPC,SetFlush,1,109,50,0,300,Optical Cell Flushing time in seconds
+LPC,SampleAveraging,1,110,10,0,120,Number of 2 seconds samples to sum for each telemetered data point
+LPC,SetPump1BEMF,1,111,7.8,0,13,Back EMF (Pump speed) setpoint for pump 1
+LPC,SetPump2BEMF,1,112,7.8,0,13,Back EMF (Pump speed) setpoint for pump 1
+LPC,SetPumpMaxT,1,113,65,-40,100,Maximum pump operating temperature at beginning of measurement cycle
+LPC,SetPump1MinT,1,114,-20,-40,100,Minimum operating temperature for Pump 1 at beginning of measurement cycle
+LPC,SetPump2MinT,1,115,-20,-40,100,Minimum operating temperature for Pump 2 at beginning of measurement cycle
+RACHuTS,SetAuto,0,130,0,0,1,Switch To Automatic Profile Mode
+RACHuTS,SetManual,0,131,0,0,1,Switch to Manual Profile Mode
+RACHuTS,SetSZAMin,1,132,105,0,180,Set SZA to begin profiling
+RACHuTS,SetProfileSize,1,133,7500,0.1,8500,Distance to profile in reel revolutions
+RACHuTS,SetDockAmount,1,134,75,0.1,300,Number of slow revolutions before docking
+RACHuTS,SetDwellTime,1,135,3600,1,7200,Number of seconds to dwell at bottom of profile
+RACHuTS,SetProfilePeriod,1,136,7200,60,10800,Number of second between the start of profiles
+RACHuTS,SetNumberProfiles,1,137,4,0,6,Number of Profiles per night
+RACHuTS,UseSZATrigger,0,138,0,0,1,Trigger profile commencement by SZA
+RACHuTS,UseTimeTrigger,0,139,0,0,1,Trigger profile commencement by Time
+RACHuTS,SetTimeTrigger,1,140,0,1573576976,1590969600,Time for next profile (Unix time)
+RACHuTS,SetDockOvershoot,1,141,75,0,300,Excess reel rotations to ensure dock
+RACHuTS,Redock,2,142,5,0,301,"Retry a dock: num_revs_out, num_revs_in"
+RACHuTS,GetPUStatus,0,143,0,0,1,Request State of Health from PU
+RACHuTS,PUPowerOn,0,144,0,0,1,Turn on RACHuTS PU Charger Power
+RACHuTS,PUPowerOff,0,145,0,0,1,Turn off RACHuTS PU Charger Power
+RACHuTS,ManualProfile*,4,146,0,-1,8000,"Launch a manual profile: num_revs_out, num_dock_revs, num_dock_overshoot, dwell_time"
+RACHuTS,OffLoadProfile,0,147,0,0,1,Offload PU data from previos profile
+RACHuTS,SetPreProfileTime,1,148,60,0,100000,Number of second to record docked data before a profile
+RACHuTS,SetPUWarmUpTime,1,149,120,0,1800,PU warm up before a profile in seconds
+RACHuTS,AutoRedockParams*,3,150,0,0,100,"Automatic Redocking Parameters: num_revs_out, num_revs_in, num_retrys"
+RACHuTS,SetMotionTimeout,1,151,0,0,1800,Set the MCB Motion Timeout in seconds
+RACHuTS,GetPIBEEPROM,0,152,0,1,0,Send the contents of the PIB Onfiguration EEPROM
+RACHuTS,StartDockedProfile,1,153,1800,1,65535,Start a docked measurement for duration (s)
+RACHuTS,StartRealTimeMCB,0,154,0,1,0,Enable real time MCB TMs
+RACHuTS,EndRealTimeMCB,0,155,0,1,0,Disable real time MCB TMs
+RACHuTS,LoRaTXTm,1,156,0,-1,2,Enable (1) or dissable (0) profile TM transmissin by LoRa
+RACHuTS,LoRaTXStatus,1,157,0,-1,65535,"Set the cadence for LoRa Status Updates from PU in Seconds, 0 dissables TX"
+RACHuTS,RAOverride,0,158,0,0,1,Override the requirement for a RACHuTS autherization from Zephyr before motion
+RACHuTS,RAResume,0,159,0,0,1,Resume requiring RACHuTS autherization from Zephyr before motion
+RACHuTS,SetAutoOffload,0,160,0,0,1,Automatically offload PU profile data after a manual profile (turn off for Auto Profile mode)
+RACHuTS,SetMaualOffload,0,161,0,0,1,Manually offload PU profile data after a manual profile (use this mode for Auto Profile)
+RACHuTS,PuWarmUpConfig*,5,180,0,0,0,"Set the Profiler warm up routine: flash_temp, heater1_temp, heater2_temp, flash_power, tsen_power"
+RACHuTS,PUProfileConfig*,5,181,0,0,60,"Set the PU Profile parameters: Profile Data Rate, Dwell Data Rate, FLASH On/Off, ROPC On/Off, TSEN On/Off"
+RACHuTS,DockedMeasurementConfig,3,183,0,0,65535,"Docked Profile Config: Data Rate (s), FLASH on (0/1),  ROPC on (0/1), TSEN on (0/1)"
+RACHuTS,ResetPIB,0,200,0,0,1,Reset the Profiler Interface Board
+RACHuTS,ExitError,0,201,0,0,1,Exit the error holding state
+RACHuTS,DeployDistance,1,1,0,0,8500,Deploy specified number of revolutions - motion starts immediately
+RACHuTS,DeploySpeed,1,2,60,0,300,Deployment speed in RPM
+RACHuTS,DeployAcceleration,1,3,1,0.25,2,Deployment acceleration in Revolution/s/s - do not use
+RACHuTS,RetractDistance,1,4,0,0,10000,Retract  specified number of revolutions - motion starts immediately
+RACHuTS,RetractSpeed,1,5,60,0,300,Retract speed in RPM
+RACHuTS,RetractAcceleration,1,6,1,0.25,2,Retraction acceleration in Revolution/s/s - do not use
+RACHuTS,DockDistance,1,7,75,0,300,Docking Distance in revolutions
+RACHuTS,DockSpeed,1,8,40,0,80,Docking speed in RPM
+RACHuTS,DockAcceleration,1,9,1,0.25,2,Docking acceleration in Revolution/s/s - do not use
+RACHuTS,FullRetract,0,10,0,0,0,Not implemented - set instrument to Safety Mode instead
+RACHuTS,CancelMotion,0,11,0,0,0,Cancel the currently executing motion
+RACHuTS,ZeroReel,0,12,0,0,0,Set the current reel position as the zero position
+RACHuTS,TemperatureLimits*,6,13,40,80,100,"Set the MCB temperature limits: reel hi, reel lo, lw hi, lw lo, mc1 hi, mc1 lo"
+RACHuTS,TorqueLimits*,2,14,200,500,600,"Set the MCB torque limits: reel hi, reel lo"
+RACHuTS,CurrentLimits*,2,15,2,-25,25,"Set the MCB current limits: reel hi, reel lo"
+RACHuTS,IgnoreLimits,0,16,0,0,0,"Set the MCB to ignore current, temperature, voltage limits"
+RACHuTS,UseLimits,0,17,0,0,0,"Set the MCB to use current, temperature, voltage limits"
+RACHuTS,GetMCBEEPROM,0,18,0,0,0,Request the contents of the MCB EEPROM
+RACHuTS,PUReset,0,182,0,0,0,Reset the Profiling Unit
+RACHuTS,LoRa Simulator,2,204,10,1,1000,Simulate LoRa TX from MonDo Board
+FLOATS,ResetDIB,0,200,0,0,1,Reset the Profiler Interface Board
+FLOATS,ExitError,0,201,0,0,1,Exit the error holding state
+FLOATS,DeployDistance,1,1,0,0,3685,Deploy specified number of revolutions - motion starts immediately
+FLOATS,DeploySpeed,1,2,60,0,60,Deployment speed in RPM
+FLOATS,DeployAcceleration,1,3,0,0,0,Not implemented on FLOATS
+FLOATS,RetractDistance,1,4,0,0,10000,Retract  specified number of revolutions - motion starts immediately
+FLOATS,RetractSpeed,1,5,60,0,60,Retract speed in RPM
+FLOATS,RetractAcceleration,1,6,0,0,0,Not implemented on FLOATS
+FLOATS,DockDistance,1,7,75,0,300,Docking Distance in revolutions
+FLOATS,DockSpeed,1,8,30,0,30,Docking speed in RPM
+FLOATS,DockAcceleration,1,9,0,0,0,Not implemented on FLOATS
+FLOATS,FullRetract,0,10,0,0,0,Not implemented - set instrument to Safety Mode instead
+FLOATS,CancelMotion,0,11,0,0,0,Cancel the currently executing motion
+FLOATS,ZeroReel,0,12,0,0,0,Set the current reel position as the zero position
+FLOATS,TemperatureLimits*,6,13,40,80,100,"Set the MCB temperature limits: reel hi, reel lo, lw hi, lw lo, mc1 hi, mc1 lo"
+FLOATS,TorqueLimits*,2,14,200,500,600,"Set the MCB torque limits: reel hi, reel lo"
+FLOATS,CurrentLimits*,2,15,2,13.75,15,"Set the MCB current limits: reel hi, reel lo"
+FLOATS,GoFTRFlight,0,50,0,0,0,Go to the flight FTR Sub Mode
+FLOATS,GoMCBFlight,0,51,0,0,0,Go to the flight MCB Sub Mode
+FLOATS,FTRCycleTime,1,52,300,0,3600,FTR Measurement Cycle Time (idle_period)
+FLOATS,FTROnTime,1,53,600,0,3600,FTR On Time (Measure_Period)
+FLOATS,SetFDIBHKPeriod,1,54,120,60,3600,DIB HK Period (HK_Loop)
+FLOATS,FTRStatusLimit,1,55,15,6,45,FTR Status Limit (Stat_Limit)
+FLOATS,RamanLen,1,56,1850,200,2000,FTR Raman Length (RamanLength)
+FLOATS,SetMeasureType,1,57,0,-1,10,Expired TC for Strateole2.1
+FLOATS ,ResetEFU,0,58,0,0,0,Send Reset EFU command over LoRacomm
+FLOATS,EFUHeaterSetPoint,2,59,-5,-30,60,"Set EFU heater temperature set points in C: nominal, boost"
+FLOATS ,EFUCycleTime,1,60,20,1,600,Set EFU TSEN telemetry rate in seconds
+FLOATS,EFUHKtime,1,61,60,1,600,Set EFU Housekeeping telemetry rate in seconds
+FLOATS,EFULoraTXPwr,1,62,15,10,21,Set LoRa transmit power on EFU
+FLOATS,FTROptResolution,1,63,1,1,100,Set optical resolution of the FTR in meters
+FLOATS,Blank,1,-999,0,0,0,0

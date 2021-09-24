@@ -31,6 +31,15 @@ def read_parameter_file(filename,Instrument):
 #                print(f'\t{row["Parameter"]} is accesed through Enum {row["Enum"]}, and has default value {row["Default"]} and is used to {row["Notes"]}.')
                 line_count += 1
         print(f'Processed {line_count} lines.') 
+        
+        #add a blank entry at the end for the GUI
+        Parameter.append("")
+        Enum.append("")
+        Values.append("")
+        Default.append("")
+        Min.append("")
+        Max.append("")
+        Notes.append("")
     return Parameter, Enum, Default, Values,Max, Min, Notes
         
 

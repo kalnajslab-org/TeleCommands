@@ -92,3 +92,8 @@ FLOATS,SetFDIBHKPeriod,1,54,120,60,3600,DIB HK Period: (HK_Loop),,,
 FLOATS,FTRStatusLimit,1,55,15,6,45,FTR Status Limit: (Stat_Limit),,,
 FLOATS,RamanLen,1,56,1850,200,2000,FTR Raman Length: (RamanLength),,,
 FLOATS,SetMeasureType,1,57,0,-1,10,FTR Measurement Type:, second parameter needed for burst limit (default = 8, min = 1, max = 30) 
+FLOATS ,ResetEFU,0,58,0,0,0,Send Reset EFU command over LoRacomm,,,
+FLOATS,EFUHeaterSetPoint,2,59,-5,-30,60,"Set EFU heater temperature set points in C: nominal, boost",,,
+FLOATS ,EFUCycleTime,1,60,20,1,600,Set EFU TSEN telemetry rate in seconds,,,
+FLOATS,EFUHKtime,1,61,60,1,600,Set EFU Housekeeping telemetry rate in seconds,,,
+FLOATS,EFULoraTXPwr,1,62,15,10,21,Set LoRa transmit power on EFU,,,

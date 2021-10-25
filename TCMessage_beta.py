@@ -4,8 +4,8 @@ import time
 import os
 
 ########## Update with your credentials.  Karim can provide API key #######
-user = 'lkalnajs'
-api_key = '193b23edc0272c5c8c4e6adbfcacc6409e29de83'
+user = 'XXXXXXX'
+api_key = 'XXXXXXXXXXXXXXXXXXXXXXXXXXX'
 
 tc_filename = 'TC_Parameters.csv'
 Font = ('Helvetica', 16)

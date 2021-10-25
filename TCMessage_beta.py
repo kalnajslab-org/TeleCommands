@@ -4,8 +4,8 @@ import time
 import os
 
 ########## Update with your credentials.  Karim can provide API key #######
-user = 'XXXXXXXX'
-api_key = 'XXXXXXXXX'
+user = 'lkalnajs'
+api_key = '193b23edc0272c5c8c4e6adbfcacc6409e29de83'
 
 tc_filename = 'TC_Parameters.csv'
 Font = ('Helvetica', 16)
@@ -377,8 +377,8 @@ def pick_a_TC(instrument):
  
 
 def SendTC(file_name,instrument_type,note):
-    if instrument_type == 'FLOATS':
-        flights = ['FLOATS_51','FLOATS_52','FLOATS_53','RACHuTS_51','RACHuTS_52','RACHuTS_53','LPC_51','LPC_52','LPC_53']
+    
+    flights = ['FLOATS_51','FLOATS_52','FLOATS_53','RACHuTS_51','RACHuTS_52','RACHuTS_53','LPC_51','LPC_52','LPC_53']
     
     flight_layout = [[sg.Listbox(values=flights,key = '_param_', tooltip = 'Select balloon/instrument to send TC to', size=(20, 6),font = Font)]]
     layout_config_TC = [[sg.Frame('Select Instrument/Flight: ', flight_layout, font = Font)],

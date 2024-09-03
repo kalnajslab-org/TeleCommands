@@ -1,0 +1,2 @@
+PySimpleGUIQt
+PySide6

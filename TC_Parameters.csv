@@ -10,6 +10,8 @@ LPC,SetPump2BEMF,1,112,7.8,0,13,Back EMF Pump2:  (Pump speed) setpoint for pump 
 LPC,SetPumpMaxT,1,113,65,-40,100,Maximum Pump Temp: at beginning of measurement cycle,,,
 LPC,SetPump1MinT,1,114,-20,-40,100,Minimum Pump1 Temp: operating temperature at beginning of measurement cycle,,,
 LPC,SetPump2MinT,1,115,-20,-40,100,Minimum Pump2 Temp: operating temperature at beginning of measurement cycle,,,
+LPC,SetPHA*,3,116,0,0,4095,"PHA parameters: hi gain threshold, hi gain baseline offset, lo gain baseline offset",,,
+LPC,SetRS41Regen,0,117,0,0,1,"Start an RS41 regeneration",,,
 RACHuTS,SetAuto,0,130,0,0,1,Switch To Automatic Profile Mode,,,
 RACHuTS,SetManual,0,131,0,0,1,Switch to Manual Profile Mode,,,
 RACHuTS,SetSZAMin,1,132,105,0,180,Set SZA to begin profiling:,,,

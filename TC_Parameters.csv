@@ -27,6 +27,8 @@ RATS,RatsRealTimeMcbOff,0,63,0,0,1,Disable RATS MCB reel motion real-time report
 RATS,RatsLoraTxTestOn,0,64,0,0,1,Enable LoRa TX test (RATSLORATXTESTON),,,
 RATS,RatsLoraTxTestOff,0,65,0,0,1,Disable LoRa TX test (RATSLORATXTESTOFF),,,
 RATS,RatsRatsSetEcuTemp,1,66,0,-20,70,Set ECU teperature (degC) (RATSECUTEMP),,,
+RATS,RatsRatsSetEcuTemp,0,67,0,0,1,ECU Power ON,,,
+RATS,RatsRatsSetEcuTemp,0,68,0,0,1,ECU Power OFF,,,
 LPC,SetSample,1,101,150,1,1800,Set Number of Samples: 2s Samples to collect in one measurement,,,
 LPC,SetWarmUpTime,1,102,10,0,1800,Warm Up Time: Seconds to remain in warmup mode,,,
 LPC,setCycleTime,1,103,60,3,1440,Cycle Time: in Minutes,,,
